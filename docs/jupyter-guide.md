@@ -9,7 +9,7 @@ Ensure you have:
 - Jupyter Notebook or JupyterLab
 - IPython
 
-See the [Jupyter setup guide](jupyter_setup.md) for installation instructions.
+See the [Jupyter setup guide](jupyter-setup.md) for installation instructions.
 
 ## Getting Started
 
