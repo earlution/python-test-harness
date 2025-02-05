@@ -30,7 +30,7 @@ Choose your preferred method:
 ### Optional Requirements (Jupyter Version)
 - Jupyter Notebook/Lab
 - IPython
-- See [Jupyter setup guide](docs/jupyter_setup.md) for details
+- See [Jupyter setup guide](docs/jupyter-setup.md) for details
 
 ## Installation
 
@@ -42,7 +42,7 @@ cd python-test-harness
 
 2. Choose your implementation:
    - For Python only: No additional setup needed
-   - For Jupyter: Follow the [Jupyter setup guide](docs/jupyter_setup.md)
+   - For Jupyter: Follow the [Jupyter setup guide](docs/jupyter-setup.md)
 
 ## Project Structure
 
