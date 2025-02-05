@@ -9,8 +9,8 @@ This project can be used in two ways:
 2. **Jupyter Notebook (Optional)**: Enhanced interactive experience if Jupyter is available
 
 Choose your preferred method:
-- [Python Only Implementation](docs/python_guide.md)
-- [Jupyter Notebook Implementation](docs/jupyter_guide.md)
+- [Python Only Implementation](docs/python-guide.md)
+- [Jupyter Notebook Implementation](docs/jupyter-guide.md)
 
 ## Features
 
@@ -54,9 +54,9 @@ python-test-harness/
 │   └── examples.py          # Example implementations
 │
 ├── docs/                    # Documentation
-│   ├── python_guide.md      # Guide for Python-only usage
-│   ├── jupyter_guide.md     # Guide for Jupyter implementation
-│   ├── jupyter_setup.md     # Jupyter setup instructions
+│   ├── python-guide.md      # Guide for Python-only usage
+│   ├── jupyter-guide.md     # Guide for Jupyter implementation
+│   ├── jupyter-setup.md     # Jupyter setup instructions
 │   └── examples.md          # Detailed examples for both approaches
 │
 ├── notebooks/               # Optional Jupyter materials
@@ -76,8 +76,8 @@ python-test-harness/
 
 ## Documentation
 
-- [Python Implementation Guide](docs/python_guide.md)
-- [Jupyter Implementation Guide](docs/jupyter_guide.md)
+- [Python Implementation Guide](docs/python-guide.md)
+- [Jupyter Implementation Guide](docs/jupyter-guide.md)
 - [Example Usage](docs/examples.md)
 - [Contributing Guidelines](docs/contributing.md)
 
