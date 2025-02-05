@@ -2,6 +2,16 @@
 
 A simple yet powerful test harness designed specifically for GCSE and A-Level Computer Science students in the UK. This tool helps students learn and practice test-driven development with clear, educational examples.
 
+## Quick Start
+
+This project can be used in two ways:
+1. **Python Only (Default)**: Standard Python implementation, works everywhere
+2. **Jupyter Notebook (Optional)**: Enhanced interactive experience if Jupyter is available
+
+Choose your preferred method:
+- [Python Only Implementation](docs/python_guide.md)
+- [Jupyter Notebook Implementation](docs/jupyter_guide.md)
+
 ## Features
 
 - Easy-to-use test framework for Python functions
@@ -11,6 +21,17 @@ A simple yet powerful test harness designed specifically for GCSE and A-Level Co
 - Educational examples aligned with the UK Computer Science curriculum
 - Available in both standard Python and Jupyter Notebook formats
 
+## Requirements
+
+### Basic Requirements (Python Only)
+- Python 3.8 or higher
+- No additional dependencies required
+
+### Optional Requirements (Jupyter Version)
+- Jupyter Notebook/Lab
+- IPython
+- See [Jupyter setup guide](docs/jupyter_setup.md) for details
+
 ## Installation
 
 1. Clone this repository:
@@ -19,112 +40,33 @@ git clone https://github.com/yourusername/python-test-harness.git
 cd python-test-harness
 ```
 
-2. No additional dependencies are required - the test harness uses only Python's standard library.
-
-## Usage
-
-### Basic Example
-
-```python
-from test_harness import TestHarness
-
-# Create a function to test
-def add_five(number):
-    return number + 5
-
-# Create test harness
-harness = TestHarness()
-
-# Define test cases
-test_cases = [
-    ([0], 5, "Adding five to zero"),
-    ([10], 15, "Adding five to ten"),
-    ([-3], 2, "Adding five to a negative number")
-]
-
-# Run the tests
-harness.run_test_suite(add_five, test_cases)
-```
-
-### Test Case Format
-
-Each test case consists of three elements:
-1. Input arguments (in a list)
-2. Expected output
-3. Test name (optional)
-
-Example: `([input], expected_output, "test name")`
-
-## Educational Resources
-
-This repository includes:
-
-- `test_harness.py`: The main test harness code
-- `examples.py`: Various example functions and tests
-- `student_guide.md`: Detailed documentation for students
-- `test_harness_tutorial.ipynb`: Interactive Jupyter Notebook tutorial
-- Sample exercises and solutions
-
-## For Teachers
-
-The test harness is designed to support teaching of:
-- Unit testing
-- Test-driven development
-- Code quality and reliability
-- Debugging techniques
-- Problem-solving skills
-
-### Curriculum Alignment
-
-The examples and exercises align with:
-- GCSE Computer Science specifications
-- A-Level Computer Science requirements
-- Programming fundamentals
-- Testing methodologies
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-### Guidelines for Contributing:
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## Licence
-
-This project is licensed under the MIT Licence - see the [LICENCE](LICENCE) file for details.
-
-## Acknowledgments
-
-- Developed for UK Computer Science education
-- Inspired by Python's unittest framework
-- Created with input from Computer Science teachers
+2. Choose your implementation:
+   - For Python only: No additional setup needed
+   - For Jupyter: Follow the [Jupyter setup guide](docs/jupyter_setup.md)
 
 ## Project Structure
 
 ```
 python-test-harness/
 │
-├── src/
-│   ├── test_harness.py
-│   └── examples.py
+├── src/                      # Core implementation
+│   ├── test_harness.py      # Main test harness code
+│   └── examples.py          # Example implementations
 │
-├── docs/
-│   ├── student_guide.md
-│   └── teacher_guide.md
+├── docs/                    # Documentation
+│   ├── python_guide.md      # Guide for Python-only usage
+│   ├── jupyter_guide.md     # Guide for Jupyter implementation
+│   ├── jupyter_setup.md     # Jupyter setup instructions
+│   └── examples.md          # Detailed examples for both approaches
 │
-├── notebooks/
+├── notebooks/               # Optional Jupyter materials
 │   └── test_harness_tutorial.ipynb
 │
-├── examples/
-│   ├── basic_examples.py
-│   ├── gcse_examples.py
-│   └── alevel_examples.py
+├── examples/                # Example code for both approaches
+│   ├── python/             # Python-only examples
+│   └── jupyter/            # Jupyter-specific examples
 │
-├── tests/
+├── tests/                   # Unit tests
 │   └── test_harness_tests.py
 │
 ├── README.md
@@ -132,14 +74,31 @@ python-test-harness/
 └── .gitignore
 ```
 
-## Contact
+## Documentation
 
-If you have any questions or suggestions, please open an issue on GitHub or contact the maintainers.
+- [Python Implementation Guide](docs/python_guide.md)
+- [Jupyter Implementation Guide](docs/jupyter_guide.md)
+- [Example Usage](docs/examples.md)
+- [Contributing Guidelines](docs/contributing.md)
 
-## Version History
+## For Teachers
 
-- 1.0.0
-    - Initial release
-    - Basic test harness functionality
-    - Educational documentation
-    - Example suite
+### Python-Only Environment
+- Perfect for standard computer labs
+- Works on any system with Python installed
+- No additional setup required
+- Command-line interface available
+
+### Jupyter Environment (Optional)
+- Interactive learning experience
+- Real-time code execution
+- Better for demonstrations
+- Requires additional setup
+
+## Contributing
+
+Contributions are welcome! Please read our [Contributing Guidelines](docs/contributing.md) before submitting a Pull Request.
+
+## Licence
+
+This project is licensed under the MIT Licence - see the [LICENCE](LICENCE) file for details.
