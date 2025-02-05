@@ -1,133 +1,180 @@
-# Jupyter Implementation Guide
+# Python Implementation Guide
 
-This guide covers using the test harness in a Jupyter environment for an enhanced interactive experience.
-
-## Prerequisites
-
-Ensure you have:
-- Python 3.8 or higher
-- Jupyter Notebook or JupyterLab
-- IPython
-
-See the [Jupyter setup guide](jupyter-setup.md) for installation instructions.
+This guide covers using the test harness in a standard Python environment.
 
 ## Getting Started
 
-1. Start Jupyter:
-```bash
-jupyter notebook
+1. Ensure Python 3.8 or higher is installed
+2. Copy `test_harness.py` to your working directory
+3. Import and use the test harness in your code
+
+## Basic Usage
+
+```python
+from test_harness import TestHarness
+
+# Create a function to test
+def add_numbers(a, b):
+    return a + b
+
+# Create test harness with default settings
+harness = TestHarness()
+
+# Or create with specific settings
+harness = TestHarness(
+    show_hints=True,    # Show helpful hints for failed tests
+    use_colours=True    # Use coloured output in terminal
+)
+
+# Define test cases
+test_cases = [
+    ([1, 2], 3, "Simple addition"),
+    ([0, 0], 0, "Zero addition"),
+    ([-1, 1], 0, "Negative numbers")
+]
+
+# Run the tests
+harness.run_test_suite(add_numbers, test_cases)
 ```
 
-2. Navigate to the `notebooks` directory
-3. Open `test_harness_tutorial.ipynb`
+## Test Output Features
 
-## Using the Interactive Tutorial
+### Coloured Output
+The test harness uses colours to make results clear:
+- Green (✓) for passed tests
+- Red (✗) for failed tests
+- Yellow (✗) for errors
+- Coloured summary statistics
 
-The tutorial notebook contains:
-1. Introduction to testing concepts
-2. Live code examples
-3. Interactive exercises
-4. Challenge problems
+Example output:
+```
+✓ Simple addition PASSED
+  Input: [1, 2]
+  Expected: 3
+  Actual: 3
 
-### Running Cells
+✗ Division test FAILED
+  Input: [10, 2]
+  Expected: 6
+  Actual: 5
+  Hint: The result (5) is too small
 
-- Click a cell and press Shift+Enter to run it
-- Run cells in order from top to bottom
-- Wait for each cell to finish before running the next
+Test Suite Summary:
+Total tests: 2
+Passed: 1
+Failed: 1
+Success rate: 50.00%
+```
 
-### Modifying Code
+### Educational Hints
+When tests fail, the harness provides helpful hints:
+- Type mismatches: "Function returned a str, but we expected an int"
+- Numeric comparisons: "The result is too small/large"
+- String issues: "The string lengths don't match"
 
-- Double-click any code cell to edit
-- Try changing values and running tests
-- Add new test cases
-- Create your own functions
+## Test Case Format
 
-## Classroom Usage
+Each test case is a tuple with:
+1. Input arguments (in a list)
+2. Expected output
+3. Test name (optional)
 
-### Teacher Setup
-1. Install Jupyter on teaching machine
-2. Prepare the notebook environment
-3. Test all examples beforehand
+Examples:
+```python
+# Basic format
+([inputs], expected_output)
 
-### Student Setup
-1. Copy notebook files to student machines
-2. Ensure Jupyter is installed and configured
-3. Test notebook access
+# With test name
+([inputs], expected_output, "test name")
 
-### Teaching Approaches
+# Multiple inputs
+([input1, input2], expected_output, "test name")
+```
 
-1. **Guided Learning**
-   - Walk through notebook together
-   - Students follow along
-   - Stop for exercises
+## Running Tests
 
-2. **Independent Learning**
-   - Students work at their own pace
-   - Teacher available for help
-   - Check progress at checkpoints
+### Method 1: Direct Script Execution
+```python
+# test_script.py
+if __name__ == "__main__":
+    harness = TestHarness()
+    harness.run_test_suite(your_function, test_cases)
+```
 
-3. **Pair Programming**
-   - Students work in pairs
-   - Take turns writing tests
-   - Review each other's work
+Run with:
+```bash
+python test_script.py
+```
 
-## Alternative Setups
+### Method 2: Interactive Python Shell
+```python
+>>> from test_harness import TestHarness
+>>> harness = TestHarness()
+>>> harness.run_test_suite(your_function, test_cases)
+```
 
-### Google Colab
-If local Jupyter installation isn't possible:
-1. Upload notebooks to Google Colab
-2. Share links with students
-3. Students can run in browser
+## Best Practices
 
-### MyBinder
-For a consistent environment:
-1. Create Binder configuration
-2. Share Binder link
-3. Students run in browser
+1. Test Case Design
+   - Test normal cases
+   - Test edge cases (0, empty, max values)
+   - Test error cases
+   - Use descriptive test names
+
+2. Output Reading
+   - Green means success
+   - Red means logical failure
+   - Yellow means runtime error
+   - Read hints for guidance
+
+3. Test Organisation
+   - Group related tests together
+   - Use clear test names
+   - Test one concept per test
+
+## For Teachers
+
+### Classroom Setup
+1. Configure colour preferences:
+   ```python
+   harness = TestHarness(
+       use_colours=True,    # False for non-terminal environments
+       show_hints=True      # True for beginners
+   )
+   ```
+
+2. Hint Levels:
+   - Use show_hints=True for beginners
+   - Disable hints for advanced exercises
+
+### Teaching Tips
+1. Start with simple functions
+2. Use hints to guide learning
+3. Progress to more complex examples
+4. Encourage students to write their own tests
 
 ## Troubleshooting
 
-Common Jupyter issues:
+Common issues and solutions:
 
-1. Kernel Problems
-   - Restart kernel
-   - Run all cells again
-   - Check for error messages
+1. No Colours Showing
+   - Check terminal support
+   - Verify use_colours=True
+   - Try in different terminal
 
-2. Package Installation
-   - Use pip in notebook
-   - Check package versions
-   - Verify imports
+2. Test Case Errors
+   - Verify tuple format
+   - Check input list syntax
+   - Confirm expected output type
 
-3. Cell Execution
-   - Run cells in order
-   - Check for missing variables
-   - Look for skipped cells
-
-## Advanced Features
-
-### Magic Commands
-```python
-%run test_harness.py
-%matplotlib inline
-%autoreload 2
-```
-
-### Debugging
-```python
-%debug
-from IPython.core.debugger import set_trace
-```
-
-## Resources
-
-- [Example Notebooks](../notebooks/)
-- [Exercise Solutions](../notebooks/solutions/)
-- [Advanced Topics](../notebooks/advanced/)
+3. Hint Issues
+   - Verify show_hints=True
+   - Check function output types
+   - Review expected values
 
 ## Next Steps
 
-1. Complete the tutorial notebook
-2. Try the exercises
-3. Create your own test cases
-4. Explore advanced features
+1. Try the [example scripts](../examples/python/)
+2. Practice writing test cases
+3. Explore advanced features
+4. Create your own test scenarios

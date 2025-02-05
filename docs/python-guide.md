@@ -17,8 +17,14 @@ from test_harness import TestHarness
 def add_numbers(a, b):
     return a + b
 
-# Create test harness
+# Create test harness with default settings
 harness = TestHarness()
+
+# Or create with specific settings
+harness = TestHarness(
+    show_hints=True,    # Show helpful hints for failed tests
+    use_colours=True    # Use coloured output in terminal
+)
 
 # Define test cases
 test_cases = [
@@ -31,9 +37,61 @@ test_cases = [
 harness.run_test_suite(add_numbers, test_cases)
 ```
 
-## Running Tests
+## Test Output Features
 
-You can run tests in several ways:
+### Coloured Output
+The test harness uses colours to make results clear:
+- Green (✓) for passed tests
+- Red (✗) for failed tests
+- Yellow (✗) for errors
+- Coloured summary statistics
+
+Example output:
+```
+✓ Simple addition PASSED
+  Input: [1, 2]
+  Expected: 3
+  Actual: 3
+
+✗ Division test FAILED
+  Input: [10, 2]
+  Expected: 6
+  Actual: 5
+  Hint: The result (5) is too small
+
+Test Suite Summary:
+Total tests: 2
+Passed: 1
+Failed: 1
+Success rate: 50.00%
+```
+
+### Educational Hints
+When tests fail, the harness provides helpful hints:
+- Type mismatches: "Function returned a str, but we expected an int"
+- Numeric comparisons: "The result is too small/large"
+- String issues: "The string lengths don't match"
+
+## Test Case Format
+
+Each test case is a tuple with:
+1. Input arguments (in a list)
+2. Expected output
+3. Test name (optional)
+
+Examples:
+```python
+# Basic format
+([inputs], expected_output)
+
+# With test name
+([inputs], expected_output, "test name")
+
+# Multiple inputs
+([input1, input2], expected_output, "test name")
+```
+
+## Running Tests
 
 ### Method 1: Direct Script Execution
 ```python
@@ -55,68 +113,68 @@ python test_script.py
 >>> harness.run_test_suite(your_function, test_cases)
 ```
 
-### Method 3: Import in Another Script
-```python
-# your_tests.py
-from test_harness import TestHarness
-from your_module import your_function
-
-harness = TestHarness()
-harness.run_test_suite(your_function, test_cases)
-```
-
-## Examples
-
-See the [examples](../examples/python/) directory for more detailed examples.
-
-## Command-Line Interface
-
-For batch testing, you can use the command-line interface:
-
-```bash
-python -m test_harness tests_file.py
-```
-
 ## Best Practices
 
-1. Keep test cases in a separate file from your main code
-2. Use descriptive test names
-3. Test edge cases and normal cases
-4. Group related tests together
-5. Use meaningful variable names
+1. Test Case Design
+   - Test normal cases
+   - Test edge cases (0, empty, max values)
+   - Test error cases
+   - Use descriptive test names
+
+2. Output Reading
+   - Green means success
+   - Red means logical failure
+   - Yellow means runtime error
+   - Read hints for guidance
+
+3. Test Organisation
+   - Group related tests together
+   - Use clear test names
+   - Test one concept per test
+
+## For Teachers
+
+### Classroom Setup
+1. Configure colour preferences:
+   ```python
+   harness = TestHarness(
+       use_colours=True,    # False for non-terminal environments
+       show_hints=True      # True for beginners
+   )
+   ```
+
+2. Hint Levels:
+   - Use show_hints=True for beginners
+   - Disable hints for advanced exercises
+
+### Teaching Tips
+1. Start with simple functions
+2. Use hints to guide learning
+3. Progress to more complex examples
+4. Encourage students to write their own tests
 
 ## Troubleshooting
 
 Common issues and solutions:
 
-1. ImportError:
-   - Ensure test_harness.py is in your Python path
-   - Check you're in the correct directory
+1. No Colours Showing
+   - Check terminal support
+   - Verify use_colours=True
+   - Try in different terminal
 
-2. Test failures:
-   - Check input types match expected types
-   - Verify expected outputs
-   - Look for off-by-one errors
+2. Test Case Errors
+   - Verify tuple format
+   - Check input list syntax
+   - Confirm expected output type
 
-3. Syntax errors:
-   - Verify test case format: ([inputs], expected_output, "name")
-   - Check for missing commas or brackets
-
-## For Teachers
-
-### Classroom Setup
-1. Install Python on all machines
-2. Copy test_harness.py to a shared location
-3. Prepare example scripts
-
-### Teaching Tips
-1. Start with simple functions
-2. Build up to more complex examples
-3. Use pair programming exercises
-4. Encourage students to write their own test cases
+3. Hint Issues
+   - Verify show_hints=True
+   - Check function output types
+   - Review expected values
 
 ## Next Steps
 
-- Explore the [examples](../examples/python/)
-- Read the [full documentation](../docs/)
-- Try the [exercises](../examples/python/exercises/)
+1. Try the [example scripts](../examples/python/)
+2. Practice writing test cases
+3. Explore advanced features
+4. Create your own test scenarios
